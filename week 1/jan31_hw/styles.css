@@ -1,0 +1,66 @@
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arvo', serif;
+    color: rgb(250, 245, 239);
+}
+
+body {
+    margin: 0;
+    background-color: rgb(7, 6, 6);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.rightPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+
+.leftPart {
+    width: 35%;
+    height: auto;
+}
+
+.text p {
+    font-size: 20px;
+    padding: 0 1%;
+    line-height: 2;
+}
+
+h1 {
+    font-size: 60px;
+    background-color: rgb(161, 61, 2);
+    color: #000;
+    padding: 0 1%;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(255, 145, 0);
+}
+
+video {
+    width: 100%;
+    height: auto;
+}
+
+.media {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 1% 0;
+    background-color: rgb(161, 61, 2);
+}
+
+.media img {
+    width: 30%;
+    height: auto;
+}
