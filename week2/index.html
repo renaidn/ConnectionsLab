@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Claw Machine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <audio id="btn__sound--directions" src="/sounds/btn__sound--directions.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="btn__sound--grab" src="/sounds/btn__sound--grab.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx__loss" src="/sounds/sfx__loss.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx__win" src="/sounds/sfx__win.mp3" type="audio/mpeg">
+    </audio>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+        <defs>
+            <style>
+                .cls-1 {
+                    fill: #3d4a81;
+                }
+
+                .cls-2 {
+                    fill: #ffa291;
+                }
+
+                .cls-3 {
+                    fill: #f7a4d8;
+                }
+
+                .cls-4 {
+                    fill: #f9f3e7;
+                }
+
+                .cls-5 {
+                    fill: #d3665e;
+                }
+
+                .cls-6 {
+                    fill: #e8cae1;
+                }
+
+                .cls-7 {
+                    font-size: 120px;
+                }
+
+                .cls-34,
+                .cls-7 {
+                    fill: #e281c2;
+                }
+
+                .cls-31,
+                .cls-7 {
+                    font-family: Righteous-Regular, Righteous;
+                }
+
+                .cls-27,
+                .cls-35,
+                .cls-8 {
+                    fill: none;
+                    stroke-miterlimit: 10;
+                }
+
+                .cls-8 {
+                    stroke: #ef7e6f;
+                }
+
+                .cls-35,
+                .cls-8 {
+                    stroke-width: 5px;
+                }
+
+                .cls-9 {
+                    fill: #c4c2b1;
+                }
+
+                .cls-10 {
+                    fill: #ff8190;
+                }
+
+                .cls-11 {
+                    fill: #fec0c3;
+                }
+
+                .cls-12 {
+                    fill: #febd87;
+                }
+
+                .cls-13 {
+                    fill: #ffdbb1;
+                }
+
+                .cls-14 {
+                    fill: #a6a6d8;
+                }
+
+                .cls-15 {
+                    fill: #b0bed9;
+                }
+
+                .cls-16 {
+                    fill: #fa756c;
+                }
+
+                .cls-17 {
+                    fill: #efa3a3;
+                }
+
+                .cls-18 {
+                    fill: #94cfd3;
+                }
+
+                .cls-19 {
+                    fill: #c7e2e0;
+                }
+
+                .cls-20 {
+                    fill: #f1815c;
+                }
+
+                .cls-21 {
+                    fill: #d66765;
+                }
+
+                .cls-22 {
+                    fill: #ef7e6f;
+                }
+
+                .cls-23 {
+                    fill: #e26d64;
+                }
+
+                .cls-24 {
+                    fill: #cc5c56;
+                }
+
+                .cls-25 {
+                    fill: #fade7d;
+                }
+
+                .cls-26 {
+                    fill: #d8be07;
+                }
+
+                .cls-27 {
+                    stroke: #d5b60d;
+                    stroke-width: 25px;
+                }
+
+                .cls-28 {
+                    fill: #d5b60d;
+                }
+
+                .cls-29,
+                .cls-31 {
+                    fill: #d51e0c;
+                }
+
+                .cls-30 {
+                    fill: #ef553d;
+                }
+
+                .cls-31 {
+                    font-size: 75px;
+                }
+
+                .cls-32 {
+                    fill: #36ccc8;
+                    opacity: 0.15;
+                }
+
+                .cls-33 {
+                    fill: #eaa9d8;
+                }
+
+                .cls-35 {
+                    stroke: #f4d9f1;
+                }
+            </style>
+        </defs>
+        <g id="background__machine">
+            <g id="background">
+                <rect class="cls-1" width="1920" height="1080" />
+            </g>
+            <g id="lower_part">
+                <polygon class="cls-2" points="1785 880 135 880 0 1080 1920 1080 1785 880" />
+                <polygon class="cls-3" points="1763.516 905 156.484 905 55 1055 1865 1055 1763.516 905" />
+            </g>
+            <g id="upper_part">
+                <rect class="cls-2" x="134" y="200" width="1650" height="680" />
+                <rect class="cls-4" x="159" y="225" width="1600" height="630" />
+                <rect class="cls-5" x="157.5" y="269.5" width="1600" height="60" />
+                <rect class="cls-2" x="109" width="1700" height="200" />
+                <rect class="cls-6" x="134" y="25" width="1650" height="150" /><text class="cls-7"
+                    transform="translate(300.9785 141.1274)">BOOKS CLAW MACHINE</text>
+                <line class="cls-8" x1="185" y1="880" x2="1735" y2="880" />
+            </g>
+            <g id="books_back">
+                <rect class="cls-9" x="159" y="762" width="1600" height="93" />
+                <rect class="cls-9" x="201.3635" y="704" width="356.1961" height="62" />
+                <rect class="cls-9" x="1625" y="612" width="51" height="150" />
+                <rect class="cls-9" x="1574" y="639" width="51" height="150" />
+                <rect class="cls-9" x="1527" y="619" width="51" height="150" />
+                <rect class="cls-9" x="1427" y="705" width="150" height="26"
+                    transform="translate(540.6475 2077.165) rotate(-80.277)" />
+                <rect class="cls-9" x="1401.3617" y="711.4681" width="150" height="26"
+                    transform="translate(512.964 2057.2707) rotate(-80.277)" />
+                <rect class="cls-9" x="1069.402" y="704" width="356.1961" height="62" />
+                <rect class="cls-9" x="1187" y="642" width="273" height="62" />
+                <rect class="cls-9" x="954.3277" y="673.4593" width="165.433" height="62"
+                    transform="translate(30.5637 1451.9355) rotate(-70.788)" />
+                <rect class="cls-9" x="1109.101" y="647.0822" width="119.6671" height="26.2126"
+                    transform="translate(-124.4507 1019.9263) rotate(-45)" />
+                <rect class="cls-9" x="1263.5282" y="614.3618" width="162.4718" height="27.6382" />
+                <rect class="cls-9" x="563.4615" y="515.902" width="62" height="356.1961"
+                    transform="translate(-315.518 777.4135) rotate(-54.6549)" />
+                <rect class="cls-9" x="666.3617" y="516.37" width="62" height="356.1961"
+                    transform="translate(-272.5273 861.5447) rotate(-54.6549)" />
+                <rect class="cls-9" x="814.2554" y="675.6345" width="26.2126" height="119.6671"
+                    transform="translate(-251.1752 984.865) rotate(-54.6549)" />
+                <rect class="cls-9" x="930.5282" y="701.3618" width="119.6671" height="26.2126"
+                    transform="translate(-10.2086 1414.568) rotate(-70.788)" />
+                <rect class="cls-9" x="819.1622" y="608.7793" width="273" height="93.1329"
+                    transform="translate(22.3399 1342.1337) rotate(-70.788)" />
+                <rect class="cls-9" x="242.5282" y="681.3618" width="156.4718" height="22.6382" />
+                <rect class="cls-9" x="291.5282" y="660.3618" width="119.6671" height="26.2126" />
+            </g>
+            <g id="books_front">
+                <rect class="cls-10" x="323" y="746" width="206" height="63" />
+                <rect class="cls-11" x="323" y="754" width="206" height="48" />
+                <rect class="cls-12" x="591.3617" y="713" width="400.6383" height="95.9681" />
+                <rect class="cls-13" x="592" y="721" width="400" height="79" />
+                <rect class="cls-14" x="457.5" y="674.5" width="206" height="63"
+                    transform="translate(1266.5 145.5) rotate(90)" />
+                <rect class="cls-15" x="457.5" y="685.5" width="205" height="40"
+                    transform="translate(1265.5 145.5) rotate(90)" />
+                <rect class="cls-16" x="441.689" y="668.0135" width="124.0598" height="37.9406"
+                    transform="translate(-258.4677 1067.4454) rotate(-80.277)" />
+                <rect class="cls-17" x="449.8235" y="677.2972" width="107.1973" height="19.2714"
+                    transform="translate(-258.6643 1067.1106) rotate(-80.277)" />
+                <rect class="cls-12" x="390.7573" y="668.3701" width="124.0598" height="37.9406"
+                    transform="translate(-357.0804 834.1993) rotate(-66.9032)" />
+                <rect class="cls-13" x="398.9116" y="677.5866" width="107.1973" height="19.2714"
+                    transform="translate(-357.1401 833.8728) rotate(-66.9032)" />
+                <rect class="cls-18" x="318.483" y="717.5486" width="93.3732" height="28.5559"
+                    transform="translate(730.3395 1463.6529) rotate(180)" />
+                <rect class="cls-19" x="323.9999" y="724" width="82.0001" height="15.9999"
+                    transform="translate(730.0003 1463.9998) rotate(180)" />
+                <rect class="cls-10" x="357.207" y="699" width="63.4532" height="19.4056"
+                    transform="translate(777.8675 1417.4055) rotate(180)" />
+                <rect class="cls-11" x="361.5194" y="703.9284" width="54.8285" height="9.8568"
+                    transform="translate(777.8675 1417.7135) rotate(180)" />
+                <rect class="cls-16" x="953.2158" y="730.3772" width="126.8985" height="28.5559"
+                    transform="translate(627.8798 1943.3899) rotate(-108.2515)" />
+                <rect class="cls-17" x="961.6247" y="737.4738" width="109.6502" height="14.5046"
+                    transform="matrix(-0.3132, -0.9497, 0.9497, -0.3132, 627.5297, 1943.2787)" />
+                <rect class="cls-10" x="856.2529" y="684.3604" width="126.8985" height="28.5559"
+                    transform="translate(1839.4044 1397.2764) rotate(180)" />
+                <rect class="cls-11" x="856" y="691.6127" width="127" height="14.5046"
+                    transform="translate(1839.0002 1397.7297) rotate(180)" />
+                <rect class="cls-16" x="625.8486" y="684.6582" width="126.8985" height="28.5559"
+                    transform="translate(1378.5959 1397.8722) rotate(180)" />
+                <rect class="cls-17" x="626" y="691.9105" width="127" height="14.0895"
+                    transform="translate(1379.0001 1397.9104) rotate(180)" />
+                <rect class="cls-12" x="601.8486" y="657.6582" width="126.8985" height="28.5559"
+                    transform="translate(1330.5959 1343.8722) rotate(180)" />
+                <rect class="cls-13" x="602" y="662" width="127" height="18.997"
+                    transform="translate(1331.0001 1342.9969) rotate(180)" />
+                <rect class="cls-18" x="619" y="630.6582" width="127" height="28.5559"
+                    transform="translate(1365.0002 1289.8722) rotate(180)" />
+                <rect class="cls-19" x="619.0001" y="636.91" width="127" height="14.0895"
+                    transform="translate(1365.0002 1287.9094) rotate(180)" />
+                <rect class="cls-12" x="1222.1577" y="667.4178" width="183.6402" height="98.8046"
+                    transform="translate(597.1585 2030.7984) rotate(-90)" />
+                <rect class="cls-13" x="1222" y="678" width="184" height="78"
+                    transform="matrix(0, -1, 1, 0, 597.001, 2031.0005)" />
+                <rect class="cls-16" x="1425.5959" y="745.1533" width="309.4041" height="62.6226" />
+                <rect class="cls-17" x="1426" y="760.0636" width="309" height="31.9364" />
+                <rect class="cls-14" x="93.191" y="660.8986" width="242.2065" height="49.022"
+                    transform="translate(-393.0503 1068.6078) rotate(-104.8875)" />
+                <rect class="cls-15" x="109.2757" y="673.0595" width="209.2853" height="24.9"
+                    transform="translate(-393.6195 1068.37) rotate(-104.8875)" />
+                <rect class="cls-12" x="187.29" y="712.6269" width="157.1064" height="31.7979"
+                    transform="translate(-369.9263 1172.6201) rotate(-104.8875)" />
+                <rect class="cls-13" x="187.2162" y="719.8953" width="157.1014" height="16.6625"
+                    transform="translate(-369.7329 1172.1702) rotate(-104.8875)" />
+                <rect class="cls-10" x="1314.6383" y="712.8032" width="157.1064" height="31.7979"
+                    transform="translate(1046.8931 2262.347) rotate(-104.8875)" />
+                <rect class="cls-11" x="1325.0715" y="720.6913" width="135.7522" height="16.1513"
+                    transform="matrix(-0.2569, -0.9664, 0.9664, -0.2569, 1046.5239, 2262.1928)" />
+                <rect class="cls-10" x="1116.8719" y="742.1283" width="78.2561" height="54"
+                    transform="translate(386.8736 1925.1295) rotate(-90.0001)" />
+                <rect class="cls-11" x="1122.2061" y="753.6363" width="67.6194" height="30.984"
+                    transform="translate(386.8897 1925.1455) rotate(-90.0001)" />
+                <rect class="cls-10" x="1015.8664" y="750.9093" width="78.2561" height="30.0106"
+                    transform="translate(658.0241 2007.7088) rotate(-108.2515)" />
+                <rect class="cls-11" x="1020.9586" y="758.3674" width="67.6194" height="15.2435"
+                    transform="translate(657.6563 2007.5919) rotate(-108.2515)" />
+            </g>
+        </g>
+        <g id="claw__dynamic">
+            <g id="claw__dynamic--open">
+                <path class="cls-20"
+                    d="M323.0856,533.0793a57.4553,57.4553,0,0,1-26.1719,48.525c-.2064.1293-.4128.2663-.6193.3957l-4.6077-8.2422a46.4076,46.4076,0,0,0,5.227-3.8129A48.0629,48.0629,0,0,0,313.87,533.0793c0-26.2717-20.6279-47.5661-46.0774-47.5661s-46.0773,21.2944-46.0773,47.5661a48.1175,48.1175,0,0,0,16.2192,36.2339,47.122,47.122,0,0,0,4.5709,3.5313l-4.5709,8.1814-.0369.0684A57.4656,57.4656,0,0,1,212.5,533.0793C212.5,501.5563,237.2565,476,267.7928,476S323.0856,501.5563,323.0856,533.0793Z" />
+            </g>
+            <rect id="claw__dynamic--stick" class="cls-21" x="258" y="327" width="20" height="150" />
+        </g>
+        <g id="claw__static">
+            <path class="cls-22"
+                d="M218,327H318a0,0,0,0,1,0,0v23a50,50,0,0,1-50,50h0a50,50,0,0,1-50-50V327A0,0,0,0,1,218,327Z" />
+            <rect class="cls-23" x="243" y="392" width="50" height="75" />
+            <path class="cls-24"
+                d="M253,466h30a0,0,0,0,1,0,0v0a10,10,0,0,1-10,10H263a10,10,0,0,1-10-10v0A0,0,0,0,1,253,466Z" />
+        </g>
+        <g id="book__red">
+            <rect class="cls-16" x="736.2721" y="655.3597" width="95.8799" height="21.5758"
+                transform="translate(118.0646 1450.3598) rotate(-90)" />
+            <rect class="cls-17" x="742.617" y="660.6681" width="82.8477" height="10.9591"
+                transform="translate(117.8934 1450.1886) rotate(-90)" />
+        </g>
+        <g id="book__blue">
+            <rect class="cls-14" x="1107.581" y="699.69" width="189.7942" height="29.0438"
+                transform="translate(488.2664 1916.6902) rotate(-90)" />
+            <rect class="cls-15" x="1107.2746" y="706.597" width="189.946" height="14.7524"
+                transform="translate(488.2745 1916.2209) rotate(-90)" />
+        </g>
+        <g id="book__green">
+            <rect class="cls-18" x="1015.1088" y="697.364" width="190.0748" height="31.7075"
+                transform="translate(396.9288 1823.3642) rotate(-90)" />
+            <rect class="cls-19" x="1015.4807" y="703.4999" width="189.9461" height="18.9459"
+                transform="translate(397.4813 1823.4269) rotate(-90)" />
+        </g>
+        <g id="btn__left">
+            <g id="btn__left--groupped">
+                <polygon class="cls-25" points="509 1016 194 1016 265 894 509 894 509 1016" />
+                <rect class="cls-26" x="194" y="1016" width="315" height="11" />
+                <line class="cls-27" x1="362.8514" y1="955.5" x2="418" y2="955.5" />
+                <polygon class="cls-28" points="371.97 986.665 318 955.5 371.97 924.335 371.97 986.665" />
+            </g>
+        </g>
+        <g id="btn__right">
+            <g id="btn__right--groupped">
+                <polygon class="cls-25" points="562 1016 877 1016 806 894 562 894 562 1016" />
+                <rect class="cls-26" x="562" y="1016" width="315" height="11"
+                    transform="translate(1439 2043) rotate(180)" />
+                <line class="cls-27" x1="647" y1="955.5" x2="702.1486" y2="955.5" />
+                <polygon class="cls-28" points="693.03 986.665 747 955.5 693.03 924.335 693.03 986.665" />
+            </g>
+        </g>
+        <g id="btn__grab">
+            <g id="btn__grab--groupped">
+                <ellipse class="cls-29" cx="1570" cy="966" rx="157.5" ry="61" />
+                <ellipse class="cls-30" cx="1570" cy="955" rx="157.5" ry="61" /><text class="cls-31"
+                    transform="translate(1470.2764 980.1914)">GRAB</text></g>
+        </g>
+        <g id="layer__upper">
+            <rect id="layer__upper--glass" class="cls-32" x="160" y="225" width="1600" height="630" />
+            <g id="layer__upper--roof">
+                <path class="cls-33" d="M760,369h0A100,100,0,0,1,660,269l5-70H860v70A100,100,0,0,1,760,369Z" />
+                <path class="cls-33" d="M1160,369h0a100,100,0,0,1-100-100V199h195l5,70A100,100,0,0,1,1160,369Z" />
+                <path class="cls-33" d="M1560,369h0a100,100,0,0,1-100-100l-15-70h190l25,70A100,100,0,0,1,1560,369Z" />
+                <path class="cls-33" d="M360,369h0A100,100,0,0,1,260,269l25-70H475l-15,70A100,100,0,0,1,360,369Z" />
+                <path class="cls-34" d="M960,369h0A100,100,0,0,1,860,269V199h200v70A100,100,0,0,1,960,369Z" />
+                <path class="cls-34" d="M1360,369h0a100,100,0,0,1-100-100l-5-70h190l15,70A100,100,0,0,1,1360,369Z" />
+                <path class="cls-34" d="M160,369h0A100,100,0,0,1,60,269l50-70H285l-25,70A100,100,0,0,1,160,369Z" />
+                <path class="cls-34" d="M560,369h0A100,100,0,0,1,460,269l15-70H665l-5,70A100,100,0,0,1,560,369Z" />
+                <path class="cls-34" d="M1760,369h0a100,100,0,0,1-100-100l-25-70h175l50,70A100,100,0,0,1,1760,369Z" />
+                <line class="cls-35" x1="85" y1="269.5" x2="1835" y2="269.5" />
+            </g>
+        </g>
+    </svg>
+</body>
+<script type="text/javascript" src="app.js"></script>
+
+</html>

@@ -1,0 +1,20 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+
+body {
+    background-color: #3D4A81;
+}
+
+svg {
+    max-height: 100vh;
+    position: absolute;
+}
+
+#claw__dynamic,
+#claw__static {
+    transition: transform 1s;
+}
