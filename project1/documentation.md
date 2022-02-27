@@ -23,7 +23,7 @@
 
 ## <b>Process</b>
 
-### <i>Fetching Data and Creating a Basic Structure of the Website</i>
+### <i>Fetching Data and Creating a Basic Structure of the Website (Json & HTML)</i>
 
 <b>What I did</b><br>
 I have started building my project from fetching the data from json file to the body of my website, which was not challenging because it was done under the supervision of the professor during one of the lab sessions.I gave some basic display settings to my list of Crayola colors and tried recreating the layout shown in my wireframe. In order to see if I correctly implemented 'section' and 'div' elements in my HTML I gave them different 'background-color' settings in CSS. 
@@ -40,7 +40,7 @@ This is what it looks like at this stage (see picture below).
 ![image](https://user-images.githubusercontent.com/83557500/155863599-a4d9c526-3280-4651-861b-f33fd0bd30a6.png)
 
 
-### <i>Adding functionality</i>
+### <i>Adding functionality (JavaScript and p5)</i>
 
 <b>What I did</b><br>
 At this stage I decided to finish most of the javascript related stuff in one go, which took me two days.
@@ -99,10 +99,9 @@ function clearArtboard() {
     background(255);
 }
 ```
-- <i>Eyedropper tool imitation</i> - in order to make it possible to choose colors from the Crayola color palette, I have added an on click function, which is placed inside of a <b>for loop</b> that iterates through palette items. This <b>for loop</b> is a part of page load function that fetches data from json file, which is made for the convinience. A variable that stores current color hex is updated, and this variable is used as a <b>stroke</b> value by the active brush option. To give a visual cue to the user that the color is chosen, border setting of the color item is update. In case if the color is chosen, it's border is made to be thick, and matching to the color of the palette body, to make the color item look smaller than all of the other color items. I came up with this decision because due to the variety of colors represented on the palette, I couldn't find a color which would look definitively contrast to all of the Crayola colors from the palette. This means that instead of manipulating color, I needed to manipulate the size. However, I couldn't make the color item actually smaller or bigger either because it shifted the whole palette. So, as an alternative, I set the <b>box-sizing</b> property of the color items to <b>border-box</b>, which allowed me to get this visual effect of size change.
+- <i>Eyedropper tool imitation & current color display</i> - in order to make it possible to choose colors from the Crayola color palette, I have added an on click function, which is placed inside of a <b>for loop</b> that iterates through palette items. This <b>for loop</b> is a part of page load function that fetches data from json file, which is made for the convinience. A variable that stores current color hex is updated, and this variable is used as a <b>stroke</b> value by the active brush option. To give a visual cue to the user that the color is chosen, border setting of the color item is update. In case if the color is chosen, it's border is made to be thick, and matching to the color of the palette body, to make the color item look smaller than all of the other color items. I came up with this decision because due to the variety of colors represented on the palette, I couldn't find a color which would look definitively contrast to all of the Crayola colors from the palette. This means that instead of manipulating color, I needed to manipulate the size. However, I couldn't make the color item actually smaller or bigger either because it shifted the whole palette. So, as an alternative, I set the <b>box-sizing</b> property of the color items to <b>border-box</b>, which allowed me to get this visual effect of size change. To also display some other color related information (color name and hex), I have updated respective <b>innerHTML</b> values in the same <b>for loop</b>.
 ```
-// ITERATE THROUGH THE PALETTE ITEMS
-            for (let i = 0; i < listitems.length; i++) {
+for (let i = 0; i < listitems.length; i++) {
                 // SET ON CLICK FUNCTION FOR PALETTE ITEM
                 listitems[i].addEventListener("click", () => {
                     colorNow = allColors[i].hex;
@@ -115,6 +114,23 @@ function clearArtboard() {
                             listitems[k].style.border = "none";
                         }
                     }
+                    // DISPLAY COLOR NAME AND HEX ON THE PAGE
+                    document.getElementById("color__name").innerHTML = `color: ${allColors[i].color}`
+                    document.getElementById("color__hex").innerHTML = `hex: ${allColors[i].hex}`
+                })
+            }
+```
+- <i>Copy hex number tool</i> - on button click, user can copy the hex of the color using the <b>navigator.clipboard.writeText()</b> method. To visually signal the success of the copying, alert window is displayed to the user. Both method and the function use <b>string slice</b> method to not copy the "hex:" part of the text that goes together with the hex value.
+```
+// COPY HEX NUMBER ON BUTTON CLICK
+function copyHex() {
+    // GET THE HEX NUMBER FIELD
+    let copyHex = document.getElementById("color__hex");
+    // COPY HEX NUMBER INSIDE THE TEXT FIELD
+    navigator.clipboard.writeText(copyHex.innerHTML.slice(4, 12));
+    // DISPLAY ALERT WINDOW TO USER TO SIGNIFY SUCCESS
+    alert("Copied color hex: " + copyHex.innerHTML.slice(4, 12));
+}
 ```
 - <i>Brush size slider</i> - I have made a slider using <b>input</b> element of type <b>range</b> with maximum value of 50 and default value of 10. This piece took me quite some time to figure out. Somehow, the function that I have expected to run perfectly, didn't run at all. After some experimenting I have realized that something in the my original script file was writing over my code, which resulted in error. I have solved it by creating another script element, which only contains slider related code. Default slider value is displayed in the span and used by brushes to define brush size. Slider value is updated oninput.
 ```
@@ -333,11 +349,11 @@ function brushSelector(brushNum) {
 }
 ```
 
-I am still missing functions that would display the currently chosen color, and that would allow user to copy the hex of the color. I will work on those in the next step of my process. At this point of the project making process my page looks something like this (see picture below).
+At this point of the project making process my page looks something like this (see picture below).
 
 ![image](https://user-images.githubusercontent.com/83557500/155866547-1185c1eb-5fb2-4a7b-bebd-0a0aae9f238e.png)
 
-### <i>Working on layout and overall aesthetics</i>
+### <i>Working on layout and overall aesthetics (CSS)</i>
 <b>What I did</b><br>
 This is the last stage of my process. Now that I have most of my functionality, I need to make some final visual decision. Making those decisions took me about 2 days. I have attempted following the wireframe, however, I did so to a smaller extent as I found other visual solutions which worked for this project better as I was working on it.
 
@@ -358,4 +374,36 @@ This is the last stage of my process. Now that I have most of my functionality, 
     --black-shade: rgb(28, 20, 36);
 }
 ```
+
+This is the what my page looks like as a result (see picture below).
+
+![image](https://user-images.githubusercontent.com/83557500/155867757-e04ffc1d-9a57-4ce2-ae1d-8147cf7d0e03.png)
+
+### <b>Project Conclusions</b>
+
+My final product ended up having more functions that I expected it to. This is a list of functionality it has:
+- Drawing on canvas
+- Changing canvas orientation
+- Changing canvas size
+- Saving canvas as jpg
+- Clearing canvas
+- Copying hex of the current color
+- Choosing brush
+- Choosing brush size
+- Choosing color from the palette given (eyedropper tool imitation)
+
+<p>I am happy with how it turned out. I think it ended up being a nice mix of functionality and aesthetics. However, as always, there are some things to work on and possibly add in the future, such as:</p>
+
+- Naming things properly from the start - cleaning the code was a painful process and took me another 2 days.
+- Adding more brush options - thinking of adding shapes and watercolor brush sometime in the future.
+- Perhaps creating a guessing game with the colors - Crayola color shade names are fun, which I have discovered quite late into the process. I could make a guessing game in addition to this website, where user would be challenged with connecting the color name to the color, which is a great way to engage user with the brand.
+- Responsiveness of the page - I have got caught into every other thing that I found incredibly important for the page, so I completely put away my thoughts on making it responsive. Though, most of the sizes on the page are in vw/vh, which is a good starting point.
+- Zooming in / out of canvas - as of right now, some of my canvas sizes are rather small on the screen (16 by 9, for example). It would be nice if user could zoom in and out of the canvas to draw more comfortably.
+- Active brush visual cue - for now, when the tool is selected it is highlighted in another color, however the moment user touches the canvas, the tool is no longer visually active. I should think of a function to make the active brush tool to stay visually different from the other tools.
+- Maybe some other type of visualization for successful color code copy - alert windows are somewhat not aesthetically pleasing.
+
+<p>Even though there is a plenty of space for development, I am proud of the work I have done and feel joyful about it. Looking forward to the next project!</p>
+
+
+
 
