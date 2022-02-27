@@ -1,4 +1,10 @@
 # Project 1 - CrayolaDraw
+
+##<b>Links</b>
+
+- <a href="https://github.com/renaidn/CrayolaDraw">Link to my project repository.</a>
+- <a href="https://renaidn.github.io/CrayolaDraw/">Link to my project website.</a>
+
 ## <b>Project proposal:</b>
 <p>For this project I am going to make a website that would utilize a json file with existing crayola colors to create a wholesome online drawing experience for its users. I am imagining my target audience to be people, who don't have the device capacity to use special professional drawing programs but want to see what digital drawing is. Middle school me would have been happy to find a program of this kind, because my laptop wasn't powerful enough to support graphic softwares, but I had a deep interest in digital art. Even though online drawing websites frequently have a rather limited functionality, it was a great starting point for me to pursue my interest and familiarize myself with a tricky drawing-with-your-mouse experience.</p>
 	<br>As I don't feel too confident about my JavaScript language and p5 library knowledge at the moment, I am planning my website functionality accordingly. I expect my website to have:</p>
