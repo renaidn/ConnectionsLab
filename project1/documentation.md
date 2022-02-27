@@ -46,21 +46,61 @@ This is what it looks like at this stage (see picture below).
 At this stage I decided to finish most of the javascript related stuff in one go, which took me two days.
 
 <b>List of functions added:</b>
-<ul>
-	<li>Artboard resize tool</li>
-	<li>Artboard orientation adjusting tool</li>
-	<li>Artboard save</li>
-	<li>Artboard clear ```// CLEAR ARTBOARD ON BUTTON CLICK
+- <i>Artboard resize tool</i> - The button for this tool has a dropdown menu with three items in it. Initially, I was going to add options, such as: 1 by 1, 16 by 9, 4 by 3, 3 by 2, 5 by 3, A4 ratio, A5 ratio. However, I have realized that most of these ratios are rarely used by general public (and my page is not for professionals and field experts, but rather begginer level users) it would make more sense to use only the popular ratios, which are: 1 by 1 (instagram posts), 16 by 9 (instagram stories), A4, A5. I didn't really notice that before by A5 and A4 ratios are really close to one another, so the change from option to another is barely noticeable, which is why I decided to leave just the A4 option. So, I was left with only three options in this dropdown menu button. I have assigned size value to each of the items in HTML ("540" for "square", and "287.5" for "instagram stories", "374.2" for "A4"). On click of the dropdown menu item respective value is passed to the function, which has an if / else statement. Function compares its new argument to the values given in the statement and in case of match uses <b>resizeCanvas(sizeValue, 540, true)</b> p5 function to give it new width parameter, after which it updates its background to clear the canvas. Maximum size value for any size of canvas is 540. 
+```
+// RESIZE AND CLEAN CANVAS ON BUTTON CLICK
+function artboardSizeAdjust(sizeValue) {
+    // FOR SQUARE PROPORTIONS
+    if (sizeValue == 540) {
+        resizeCanvas(sizeValue, 540, true);
+        background(255);
+    }
+    // FOR 16:9 PROPORTIONS
+    else if (sizeValue == 287.5) {
+        resizeCanvas(sizeValue, 540, true);
+        background(255);
+    }
+    // FOR A4 PROPORTIONS
+    else if (sizeValue == 374.2) {
+        resizeCanvas(sizeValue, 540, true);
+        background(255);
+    };
+    // UPDATE SIZE VALUE FOR artboardOrientAdjust FUNCTION
+    sizeValueOrient = sizeValue;
+}
+```
+- <i>Artboard orientation adjusting tool</i> - The button for this tool has a dropdown menu with two items in it. I have assigned number values to each of the items ("1" for Portrait, and "2" for Landscape). On click of the dropdown menu item respective value is passed to the function, which has an if / else statement. Function compares its new argument to the values given in the statement and in case of match uses <b>resizeCanvas()</b> p5 function to give it new width and height parameters, after which it updates its background to clear the canvas.
+```
+// IMITATE CHANGE OF CANVAS ORIENTATION BY RESIZING AND CLEANING CANVAS ON BUTTON CLICK
+function artboardOrientAdjust(orientValue) {
+    // FOR PORTRAIT ORIENTATION
+    if (orientValue == 1) {
+        resizeCanvas(sizeValueOrient, 540, true);
+        background(255);
+    }
+    // FOR LANDSCAPE ORIENTATION
+    else if (orientValue == 2) {
+        resizeCanvas(540, sizeValueOrient, true);
+        background(255);
+    };
+}
+```
+- <i>Artboard save</i> - I have used <b>saveCanvas(canvas, 'myCrayolaDrawing', 'jpg')</b> p5 function on icon click.
+```
+// SAVE ARTBOARD ON BUTTON CLICK
+function saveUserArtboard() {
+    saveCanvas(canvas, 'myCrayolaDrawing', 'jpg');
+}
+```
+- <i>Artboard clear</i> - I have just updated background by coloring it the color of the canvas on icon click. 
+```
+// CLEAR ARTBOARD ON BUTTON CLICK
 function clearArtboard() {
     background(255);
-}```</li>
-	<li></li>
-	<li></li>
-	<li></li>
-	
-</ul>
-	
-
+}
+```
+-<i>Eyedropper tool imitation</i> - in order to make it possible to choose colors from the Crayola color palette, I have added an on click function, which is placed inside of a <b>for loop</b> that iterates through palette items
+-<i>Brush option</i> - for the brush option I have got the inspiration from <a href="https://library.superhi.com/posts/how-to-paint-with-code-creating-paintbrushes" this link </a>. It provided a great insight on how to think of digital brushes from the mathematical stand (something I lack in). I ended up adapting three brush options: crayon, marker, and spray paint. Adding these brush option made sense to me logically, as those are some of the products that Crayola company sells (and I believe that crayons is something they are well known for). Making these brushes and getting their logic was one of the most challenging parts of this projects. Functions for these brushes depend a lot on the <b>lerp()</b> p5 function and <b>for loops</b>. The lerp function is used to create points in between the two given points, which in response creates this grainy texture. For loops were used to make simulate the brush density (not adjustable by user). Functions for crayon and spray paint options are very similar. What makes the difference is the amount of time that <b>for loop</b> goes on for (less in spray paint -> less dense & more scatered point), and the accountance of <b>mouse speed</b> value (spray paint does take it into account, which makes the width of brush differ depending on the mouse speed). Marker, unlike other two options, draws tilted lines in its <b>for loop</b>, which creates a shape distinctive to markers. For the eraser, which I also categorize as a brush type, I decided to run a code that differs from the code for the crayon brush option only by the brush color (constant, that matching to the canvas color), and the brush density (eraser is significantly has significantly more densely placed points in comparison to crayon). 
 
 To view what I have so far <a href="https://condescending-davinci-411ef7.netlify.app/">click here</a>.
 <br><br>
