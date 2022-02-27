@@ -99,12 +99,248 @@ function clearArtboard() {
     background(255);
 }
 ```
--<i>Eyedropper tool imitation</i> - in order to make it possible to choose colors from the Crayola color palette, I have added an on click function, which is placed inside of a <b>for loop</b> that iterates through palette items
--<i>Brush option</i> - for the brush option I have got the inspiration from <a href="https://library.superhi.com/posts/how-to-paint-with-code-creating-paintbrushes" this link </a>. It provided a great insight on how to think of digital brushes from the mathematical stand (something I lack in). I ended up adapting three brush options: crayon, marker, and spray paint. Adding these brush option made sense to me logically, as those are some of the products that Crayola company sells (and I believe that crayons is something they are well known for). Making these brushes and getting their logic was one of the most challenging parts of this projects. Functions for these brushes depend a lot on the <b>lerp()</b> p5 function and <b>for loops</b>. The lerp function is used to create points in between the two given points, which in response creates this grainy texture. For loops were used to make simulate the brush density (not adjustable by user). Functions for crayon and spray paint options are very similar. What makes the difference is the amount of time that <b>for loop</b> goes on for (less in spray paint -> less dense & more scatered point), and the accountance of <b>mouse speed</b> value (spray paint does take it into account, which makes the width of brush differ depending on the mouse speed). Marker, unlike other two options, draws tilted lines in its <b>for loop</b>, which creates a shape distinctive to markers. For the eraser, which I also categorize as a brush type, I decided to run a code that differs from the code for the crayon brush option only by the brush color (constant, that matching to the canvas color), and the brush density (eraser is significantly has significantly more densely placed points in comparison to crayon). 
+- <i>Eyedropper tool imitation</i> - in order to make it possible to choose colors from the Crayola color palette, I have added an on click function, which is placed inside of a <b>for loop</b> that iterates through palette items. This <b>for loop</b> is a part of page load function that fetches data from json file, which is made for the convinience. A variable that stores current color hex is updated, and this variable is used as a <b>stroke</b> value by the active brush option. To give a visual cue to the user that the color is chosen, border setting of the color item is update. In case if the color is chosen, it's border is made to be thick, and matching to the color of the palette body, to make the color item look smaller than all of the other color items. I came up with this decision because due to the variety of colors represented on the palette, I couldn't find a color which would look definitively contrast to all of the Crayola colors from the palette. This means that instead of manipulating color, I needed to manipulate the size. However, I couldn't make the color item actually smaller or bigger either because it shifted the whole palette. So, as an alternative, I set the <b>box-sizing</b> property of the color items to <b>border-box</b>, which allowed me to get this visual effect of size change.
+```
+// ITERATE THROUGH THE PALETTE ITEMS
+            for (let i = 0; i < listitems.length; i++) {
+                // SET ON CLICK FUNCTION FOR PALETTE ITEM
+                listitems[i].addEventListener("click", () => {
+                    colorNow = allColors[i].hex;
+                    // CHANGE THE BORDER SETTINGS FOR THE ITEM CLICKED (SO THAT IT LOOKS SMALLER)
+                    listitems[i].style.border = "0.5vw solid whitesmoke";
+                    listitems[i].style.boxSizing = "border-box";
+                    // FOR UNCLICKED PALETTE ITEMS -> SET BORDER TO NONE (SO THAT THEY DON'T LOOK LIKE ACTIVE)
+                    for (let k = 0; k < listitems.length; k++) {
+                        if (k != i) {
+                            listitems[k].style.border = "none";
+                        }
+                    }
+```
+- <i>Brush size slider</i> - I have made a slider using <b>input</b> element of type <b>range</b> with maximum value of 50 and default value of 10. This piece took me quite some time to figure out. Somehow, the function that I have expected to run perfectly, didn't run at all. After some experimenting I have realized that something in the my original script file was writing over my code, which resulted in error. I have solved it by creating another script element, which only contains slider related code. Default slider value is displayed in the span and used by brushes to define brush size. Slider value is updated oninput.
+```
+// CREATE VARIABLES FOR slider__range AND slider__value 
+let brushSizeSlider = document.getElementById("slider__range");
+let sliderValue = document.getElementById("slider__value");
+// DISPLAY DEFAULT SLIDER VALUE IF USER DIDN'T INTERACT WITH SLIDER
+sliderValue.innerHTML = brushSizeSlider.defaultValue;
+// UPDATE SLIDER VALUE DISPLAYED ON USER INTERACTION
+brushSizeSlider.oninput = function () {
+    sliderValue.innerHTML = this.value;
+}
+```
+- <i>Brush option</i> - for the brush option I have got the inspiration from <a href="https://library.superhi.com/posts/how-to-paint-with-code-creating-paintbrushes" this link </a>. It provided a great insight on how to think of digital brushes from the mathematical stand (something I lack in). I ended up adapting three brush options: crayon, marker, and spray paint. Adding these brush option made sense to me logically, as those are some of the products that Crayola company sells (and I believe that crayons is something they are well known for). Making these brushes and getting their logic was one of the most challenging parts of this projects. Functions for these brushes depend a lot on the <b>lerp()</b> p5 function and <b>for loops</b>. The lerp function is used to create points in between the two given points, which in response creates this grainy texture. For loops were used to make simulate the brush density (not adjustable by user). Functions for crayon and spray paint options are very similar. What makes the difference is the amount of time that <b>for loop</b> goes on for (less in spray paint -> less dense & more scatered point), and the accountance of <b>mouse speed</b> value (spray paint does take it into account, which makes the width of brush differ depending on the mouse speed). Marker, unlike other two options, draws tilted lines in its <b>for loop</b>, which creates a shape distinctive to markers. For the eraser, which I also categorize as a brush type, I decided to run a code that differs from the code for the crayon brush option only by the brush color (constant, that matching to the canvas color), and the brush density (eraser is significantly has significantly more densely placed points in comparison to crayon). 
+```
+// CRAYON BRUSH FUNCTION
+function brushCrayon() {
+    // UPDATE BRUSH SIZE ACCORDING TO THE SLIDER VALUE
+    let sliderValueOutput = document.getElementById("slider__value");
+    let sliderValue = sliderValueOutput.innerHTML;
+    // DECLARE brushRadius VARIABLE WHICH WILL HOLD THE BRUSH SIZE FROM SLIDER VALUE
+    let brushRadius;
+    // UPDATE COLOR OF THE BRUSH
+    stroke(colorNow);
+    // DEFINE BRUSH DENSITY VALUE
+    let brushDensity = 95;
+    // SET THE NUMBER OF TIMES WE FIND THE LINEAR INTERPOLATION IN THE FOR LOOP (AFFECTS THE DENSITY OF THE BRUSH)
+    let lerps = 10;
 
-To view what I have so far <a href="https://condescending-davinci-411ef7.netlify.app/">click here</a>.
-<br><br>
+    // IF STATEMENT TO SET BRUSH SIZE
+    // IF SLIDER WAS NOT TOUCHED BY THE USER -> MAKE THE BRUSH OF A DEFAULT SIZE (10)
+    if (sliderValue == "") {
+        // DEFAULT BRUSH SIZE
+        brushRadius = 10;
+    }
+    // IF SLIDER WAS TOUCHED -> UPDATE BRUSH RADIUS VARIABLE
+    else {
+        brushRadius = sliderValue;
+    };
 
-![image](https://user-images.githubusercontent.com/83557500/153825992-802bda2b-b871-4f9c-8fa8-b8dafc5145a0.png)
+    // SQUARE THE BRUSH RADIUS VALUE TO MAKE THE CHANGE IN BRUSH SIZE MORE IMPACTFUL
+    let radiusSquared = brushRadius * brushRadius;
 
-<p>So far I have just implemented what I was told during our last lab session. I believe I will face more challenges later on, when implementing the drawing and responsive features.</p>
+    // MAKE THE CRAYON HAVE A GRAINY TEXTURE
+    // DRAW A FILLED IN CIRCLE MADE OUT OF A BUNCH OF POINTS BUILD AROUND THE POINT OF MOUSE CLICK
+    for (let i = 0; i < lerps; i++) {
+        // FIND THE LERPed X AND Y COORDINATES
+        const lerpX = lerp(mouseX, pmouseX, i / lerps);
+        const lerpY = lerp(mouseY, pmouseY, i / lerps);
+
+        // DRAW RANDOMIZED POINTS WITHIN A CIRCLE
+        for (let j = 0; j < brushDensity; j++) {
+            //PICK RANDOM POSITION
+            const randX = random(-brushRadius, brushRadius);
+            const randY = random(-1, 1) * sqrt(radiusSquared - randX * randX);
+            //DRAW THE POINT
+            point(lerpX + randX, lerpY + randY);
+        }
+    }
+}
+
+// MARKER BRUSH FUNCTION
+function brushMarker() {
+    // UPDATE BRUSH SIZE ACCORDING TO THE SLIDER VALUE
+    let sliderValueOutput = document.getElementById("slider__value");
+    let sliderValue = sliderValueOutput.innerHTML;
+    // DECLARE brushWidth VARIABLE WHICH WILL HOLD THE BRUSH SIZE FROM SLIDER VALUE
+    let brushWidth;
+    // UPDATE COLOR OF THE BRUSH
+    stroke(colorNow);
+    // SET THE NUMBER OF TIMES WE FIND THE LINEAR INTERPOLATION IN THE FOR LOOP (AFFECTS THE DENSITY OF THE BRUSH)
+    let lerps = 20;
+
+    // IF STATEMENT TO SET BRUSH SIZE
+    // IF SLIDER WAS NOT TOUCHED BY THE USER -> MAKE THE BRUSH OF A DEFAULT SIZE (10)
+    if (sliderValue == "") {
+        // DEFAULT BRUSH SIZE
+        brushWidth = 10;
+    }
+    // IF SLIDER WAS TOUCHED -> UPDATE BRUSH WIDTH VARIABLE
+    else {
+        brushWidth = parseInt(sliderValue);
+    };
+
+    // IMITATE MARKER BRUSH SHAPE
+    // USE FOR LOOP AND LERP TO REPEAT THE BRUSH LINE
+    for (let i = 0; i <= lerps - 1; i++) {
+        // FIND THE LERPed X AND Y COORDINATES
+        const x = lerp(mouseX, pmouseX, i / lerps);
+        const y = lerp(mouseY, pmouseY, i / lerps);
+        // DRAW A LINE
+        console.log(x - brushWidth, y - brushWidth, x + brushWidth, y + brushWidth)
+        line(x - brushWidth, y - brushWidth, x + brushWidth, y + brushWidth);
+    }
+}
+
+// SPRAY PAINT BRUSH FUNCTION
+function brushSpray() {
+    // UPDATE BRUSH SIZE ACCORDING TO THE SLIDER VALUE
+    let sliderValueOutput = document.getElementById("slider__value");
+    let sliderValue = sliderValueOutput.innerHTML;
+    // DECLARE brushRadius VARIABLE WHICH WILL HOLD THE BRUSH SIZE FROM SLIDER VALUE
+    let brushRadius;
+    // UPDATE COLOR OF THE BRUSH
+    stroke(colorNow);
+    // DEFINE BRUSH DENSITY VALUE
+    let brushDensity = 80;
+    // SET THE NUMBER OF TIMES WE FIND THE LINEAR INTERPOLATION IN THE FOR LOOP (AFFECTS THE DENSITY OF THE BRUSH)
+    let lerps = 5;
+
+    // FIND THE SPEED OF MOUSE MOVEMENT
+    let mouseSpeed = abs(mouseX - pmouseX) + abs(mouseY - pmouseY);
+
+    // IF STATEMENT TO SET BRUSH SIZE
+    // IF SLIDER WAS NOT TOUCHED BY THE USER -> MAKE THE BRUSH OF A DEFAULT SIZE (10)
+    if (sliderValue == "") {
+        // DEFAULT BRUSH SIZE
+        brushRadius = 10;
+    }
+    // IF SLIDER WAS TOUCHED -> UPDATE BRUSH RADIUS VARIABLE
+    else {
+        brushRadius = parseInt(sliderValue);
+    };
+
+    // MAKE A NEW VARIABLE THAT ACCOUNTS BOTH brushRadius AND mouseSpeed VARIABLES
+    // THE FASTER YOU MOVE THE MOUSE -> THE BIGGER THE BRUSH RADIUS
+    let radiusDynamic = mouseSpeed + brushRadius;
+    // SQUARE THE BRUSH RADIUS VALUE TO MAKE THE CHANGE IN BRUSH SIZE MORE IMPACTFUL
+    let radiusSquared = radiusDynamic * radiusDynamic;
+
+    // MAKE THE SPRAY PAINT HAVE A SPRAY TEXTURE
+    // DRAW A FILLED IN CIRCLE MADE OUT OF A BUNCH OF POINTS BUILD AROUND THE POINT OF MOUSE CLICK
+    for (let i = 0; i < lerps; i++) {
+        // FIND THE LERPed X AND Y COORDINATES
+        const lerpX = lerp(mouseX, pmouseX, i / lerps);
+        const lerpY = lerp(mouseY, pmouseY, i / lerps);
+
+        // DRAW RANDOMIZED POINTS WITHIN A CIRCLE
+        for (let j = 0; j < brushDensity; j++) {
+            //PICK RANDOM POSITION
+            const randX = random(-radiusDynamic, radiusDynamic);
+            const randY = random(-1, 1) * sqrt(radiusSquared - randX * randX);
+            //DRAW THE POINT
+            point(lerpX + randX, lerpY + randY);
+        }
+    }
+}
+
+// ERASER BRUSH FUNCTION
+function brushEraser() {
+    // UPDATE BRUSH SIZE ACCORDING TO THE SLIDER VALUE
+    let sliderValueOutput = document.getElementById("slider__value");
+    let sliderValue = sliderValueOutput.innerHTML;
+    // DECLARE brushRadius VARIABLE WHICH WILL HOLD THE BRUSH SIZE FROM SLIDER VALUE
+    let brushRadius;
+    // COLOR BRUSH BLACK
+    stroke(255);
+    // DEFINE BRUSH DENSITY VALUE
+    let brushDensity = 100;
+    // SET THE NUMBER OF TIMES WE FIND THE LINEAR INTERPOLATION IN THE FOR LOOP (AFFECTS THE DENSITY OF THE BRUSH)
+    let lerps = 100;
+
+    // IF STATEMENT TO SET BRUSH SIZE
+    // IF SLIDER WAS NOT TOUCHED BY THE USER -> MAKE THE BRUSH OF A DEFAULT SIZE (10)
+    if (sliderValue == "") {
+        // DEFAULT BRUSH SIZE
+        brushRadius = 10
+    }
+    // IF SLIDER WAS TOUCHED -> UPDATE BRUSH RADIUS VARIABLE
+    else {
+        brushRadius = sliderValue;
+    };
+
+    // SQUARE THE BRUSH RADIUS VALUE TO MAKE THE CHANGE IN BRUSH SIZE MORE IMPACTFUL
+    let radiusSquared = brushRadius * brushRadius;
+
+    // MAKE THE ERASER HAVE GRAINY TEXTURE
+    // DRAW A FILLED IN CIRCLE MADE OUT OF A BUNCH OF POINTS BUILD AROUND THE POINT OF MOUSE CLICK
+    for (let i = 0; i < lerps; i++) {
+        // FIND THE LERPed X AND Y COORDINATES
+        const lerpX = lerp(mouseX, pmouseX, i / lerps)
+        const lerpY = lerp(mouseY, pmouseY, i / lerps)
+        // DRAW RANDOMIZED POINTS WITHIN A CIRCLE
+        for (let j = 0; j < brushDensity; j++) {
+            //PICK RANDOM POSITION
+            const randX = random(-brushRadius, brushRadius)
+            const randY = random(-1, 1) * sqrt(radiusSquared - randX * randX)
+            //DRAW THE POINT
+            point(lerpX + randX, lerpY + randY)
+        }
+    }
+}
+```
+- <i>Brush selector</i> - in order for the user to only be able to use one brush at a time, I have setup a simple brush selector. This function is called in <b>draw()</b> whenever the mouse is pressed. Each of the brushes is given a value from 1 to 4. This value is passed as an argument to the selector function, which uses if / else statements calling the respective brush function. At the end of the function, local brush value variable is updated (for the use in draw function). 
+```
+// CHANGE CURRENT BRUSH ON CLICK
+function brushSelector(brushNum) {
+    // FOR CRAYON TOOL
+    if (brushNum == 1) {
+        brushCrayon()
+    }
+    // FOR MARKER TOOL
+    else if (brushNum == 2) {
+        brushMarker()
+    }
+    // FOR SPRAY PAINT TOOL
+    else if (brushNum == 3) {
+        brushSpray()
+    }
+    // FOR ERASER TOOL
+    else if (brushNum == 4) {
+        brushEraser()
+    };
+    // UPDATE CURRENT BRUSH VALUE FOR draw FUNCTION
+    brush = brushNum;
+}
+```
+
+I am still missing functions that would display the currently chosen color, and that would allow user to copy the hex of the color. I will work on those in the next step of my process. At this point of the project making process my page looks something like this (see picture below).
+
+![image](https://user-images.githubusercontent.com/83557500/155866547-1185c1eb-5fb2-4a7b-bebd-0a0aae9f238e.png)
+
+### <i>Working on layout and overall aesthetics</i>
+<b>What I did</b><br>
+This is the last stage of my process. Now that I have most of my functionality, I need to make some final visual decision. Making those decisions took me about 2 days. I have attempted following the wireframe, however, I did so to a smaller extent as I found other visual solutions which worked for this project better as I was working on it.
+
+<b>List of new design decisions made:</b>
+- <i>Moving the palette to the right side of the page</i> - perhaps because I am right handed, but I felt like palette is far more reachable 
+
