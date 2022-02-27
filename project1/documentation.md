@@ -342,5 +342,20 @@ I am still missing functions that would display the currently chosen color, and 
 This is the last stage of my process. Now that I have most of my functionality, I need to make some final visual decision. Making those decisions took me about 2 days. I have attempted following the wireframe, however, I did so to a smaller extent as I found other visual solutions which worked for this project better as I was working on it.
 
 <b>List of new design decisions made:</b>
-- <i>Moving the palette to the right side of the page</i> - perhaps because I am right handed, but I felt like palette is far more reachable 
+- <i>Moving the palette to the right side of the page</i> - perhaps because I am right handed, but I felt like palette is far more accessible when its on the right side of the page. When it was on the left side of the page, it felt as if the page didn't have an organic flow to it.
+- <i>Reduction of the palette size</i> - I was planning to have my palette take 50% of the page. However, it ended up looking gigantic and clumsy. Even though the artboard doesn't require more width, extra empty space was much needed as full palette and tool bars from two sides made it look suffocatingly full. Decreasing the width and changing the number of columns to 5 solved this issue. 
+- <i>Getting rid of extra text</i> - in the wireframe it was noted that color names and hex will be displayed under each of the individual color items. In addition to this I was thinking of writing button names right next to their respective icons. However, as I have mentioned earlier, there is already lots of necessary visual details on the page. Extra text was not appreciated. As a solution, I have decided getting rid of the text on the buttons (except for dropdown menu items) because the icons chosen for them are rather self-explanatory and easy to interpret. To display the color information more efficiently, I have used the free space on the right side of the top tool bar, which was just enough for two short lines of text.
+- <i>Degroupping brush options</i> - I was thinking that since there are already two buttons with dropdown menu, it would make sense to make brush options button into one with dropdown menu as well. However, I had just enough space for the four options of brushes. Besides, now that it's not grouped under one button, it is more accessible and aesthetically pleasing as the minimalistic icons look good. 
+- <i>Color choices</i> - my wireframe was a really quick sketch, which is why it doesn't have details like color style for the page thought through. I have decided to use calm and close-to-grey-but-not-too-close colors, because I didn't want to interfere with user's creative process, but also didn't want it to look bland and not motivating for artsy activities. I ended up having this beautiful palette of tuned down grey / blue / purple colors. In order to be consistent with them through the page, I have declared these 6 specific shades as variables in the <b>root</b> element of CSS.
+```
+/* CUSTOM COLORS */
+:root {
+    --white-shade: whitesmoke;
+    --darkest-purple: rgb(99, 99, 141);
+    --lightest-purple: rgb(213, 213, 233);
+    --light-transitional-purple: rgb(199, 199, 218);
+    --dark-transitional-purple: rgb(159, 149, 182);
+    --black-shade: rgb(28, 20, 36);
+}
+```
 
