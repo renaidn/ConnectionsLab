@@ -1,6 +1,6 @@
 # Project 1 - CrayolaDraw
 
-##<b>Links</b>
+## <b>Links</b>
 
 - <a href="https://github.com/renaidn/CrayolaDraw">Link to my project repository.</a>
 - <a href="https://renaidn.github.io/CrayolaDraw/">Link to my project website.</a>
