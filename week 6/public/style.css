@@ -1,0 +1,53 @@
+/* font-family: 'Shippori Antique B1', sans-serif;
+font-family: 'Syne Mono', monospace;
+font-family: 'Yatra One', cursive; */
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Syne Mono', monospace;
+    background-color: #FFE227;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+h1 {
+    font-size: 3vw;
+    font-weight: 1000;
+    margin: 5% 1.75% 4% 1.75%;
+    text-align: right;
+}
+
+h2 {
+    text-align: left;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 3% 2%;
+}
+
+.container__albums {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.line {
+    position: absolute;
+    bottom: 0;
+    display: none;
+    width: calc(100vw / 7.5);
+    height: 1vh;
+    background: #dbc00d;
+}
+
+.container__album-cover {
+    margin: 1.5%;
+    width: 13.5%;
+    box-sizing: border-box;
+}
+
+.container__album-cover:hover {
+    cursor: pointer;
+    border: 0.75vw solid #FFE227;
+    transition: 0.3s;
+}
