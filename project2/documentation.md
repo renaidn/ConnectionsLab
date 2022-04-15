@@ -67,9 +67,20 @@ Though we thought that what we have at the moment is not sufficient to get some 
 
 <b>Adding more functionality</b>
 
-After user testing we have decided to work on the game more intensely, as we are left with less than a week before the project presentation. Shyngys has resolved the issues with the lower boundaries of the game blocks by changing the value that of the reference point. Adina has added a moving block, which players can move horizontally by pushing from the side and use as a step. Collision functions similar to the other ones already implemented were adopted and adapted for the purposes of the moving block. We have thought of adding a block with locked X-position variable that would move vertically within some range, to act as an elevator. However, we have realized that it doesn't really contribute much to the collaborative aspect of the game. Perhaps, if we would add a button/switch somewhere within a map, which would activate the elevator if the player interacts with it. Since we are limited on time, we have dropped this idea and came up with something that would be easier to implement. During the user testing we were suggested to add power ups. We gave it some thought and decided that for the purpose of the game it would be more beneficial if we make each character possess 
+After user testing we have decided to work on the game more intensely, as we are left with less than a week before the project presentation. Shyngys has resolved the issues with the lower boundaries of the game blocks by changing the value that of the reference point. Adina has added a moving block, which players can move horizontally by pushing from the side and use as a step. Collision functions similar to the other ones already implemented were adopted and adapted for the purposes of the moving block. We have thought of adding a block with locked X-position variable that would move vertically within some range, to act as an elevator. However, we have realized that it doesn't really contribute much to the collaborative aspect of the game. Perhaps, if we would add a button/switch somewhere within a map, which would activate the elevator if the player interacts with it. Since we are limited on time, we have dropped this idea and came up with something that would be easier to implement. You can take a look at the video attached below to see view our progress at this stage.
 
-Shyngys has added added a second player square, which moved with IJKL keys, for the purpose of testing. 
+//video
+
+During the user testing we were suggested to add power ups. We gave it some thought and decided that for the purpose of the game it would be more beneficial if we make each character possess a skill unique to them to kind of reinforce the idea that team work is a combination of each member's strong sides that would, in sum, make up for their limitations. Consequently, we came up with two powers:
+
+- better jumps (bigger horizontal and vertical displacements)
+- stronger push (only of the two players will be able to move the boxes)
+
+The reason for which we chose these two powers is probably mainly because they are easy to implement. Coincidentally, they also fit it within the traditional combo of characters, a strong guy + an agile girl. Though, our characters are not gendered, they are just blobs with hats on (this is a spoiler, at this stage they were just hatless boxes).
+
+Our game was meant to consist of one level only. Adina came up with the map of the first level. They implemented it together, but Shyngys was in charge of troubleshooting whenever unexpected errors would appear. In the process, Shyngus also came up with an interesting feature, which essentially mimics the function of a trampoline. The gist of this feature is that when the players reaches an elevated block that is distant from the next block (too far away for the players to reach), the players may use a moving box left on the ground as a trampoline. So it would kind of require some planning. With this feature plus the difficult control (Adina, as a non gamer struggled with controls while Shyngys didn't) plus the team work coordination, the level was too difficult for a new player to navigate and complete. Shyngys has suggested to add 3 simple levels before introducing the difficult level. They divided the levels between each other (first two for Adina to implement, second two for Shyngys). Though there is a division of responsibilities, they still made contributions in each other's parts. 
+
+
 
 ### <i>Game Design</i>
 
