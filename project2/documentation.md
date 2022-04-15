@@ -7,7 +7,7 @@ Team members: Shyngys Karishev, Adina Maratkyzy
 
 ## <b>Project Proposal</b>
 
-For this project the two of us teamed up to make a game inspired by many collaborative games we have played together (It Takes Two, A Way Out, Pico Park). The game we are looking to make is a two player game, where players will need to work as a team to complete a level. Levels will be structured in such way that players won't be able to complete the level on their own. Players can either create the room or join one, where they will be assigned a character at random. Each of the characters have their own special ability: one can move chair boxes, while the other one can jump for a longer distance. Jumping from a yellow block onto the chair allows for the chair to act as a trampoline and enhance the jump of a player. Players must collect a key in order to open the door to the next level. There are four levels in total. First three levels are easy and are serving the function of a tutorial level to make the players get comfortable with the game. Fourth level is comprised of everything that the players have encountered in the first three levels, making it the most challenging one to complete. Players are free to use either arrow keys or WASD keys. Additionally, spacebar key may be used for jumping if that's what the player prefers.
+For this project the two of us teamed up to make a game inspired by many collaborative games we have played together (It Takes Two, A Way Out, Pico Park). The game we are looking to make is a two player game, where players will need to work as a team to complete a level. The purpose of the game is teaching team work and collaborative skills in an entertaining format. Levels will be structured in such way that players won't be able to complete the level on their own. Players can either create the room or join one, where they will be assigned a character at random. Each of the characters have their own special ability: one can move chair boxes, while the other one can jump for a longer distance. Jumping from a yellow block onto the chair allows for the chair to act as a trampoline and enhance the jump of a player. Players must collect a key in order to open the door to the next level. There are four levels in total. First three levels are easy and are serving the function of a tutorial level to make the players get comfortable with the game. Fourth level is comprised of everything that the players have encountered in the first three levels, making it the most challenging one to complete. Players are free to use either arrow keys or WASD keys. Additionally, spacebar key may be used for jumping if that's what the player prefers. 
 
 ## <b>Process</b>
 
@@ -51,9 +51,27 @@ Adina -
   </li>
 </ul>
 
-### <i>Game Design</i>
-
 ### <i>Game Logic</i>
+
+<b>Initial steps and preparing for the user testing</b>
+
+We have started from building a basic grid (map) to store the information about the placement of the game blocks. We then added a square (the player character), which moved with WASD and spacebar, added the gravity, and some collision functions. Collisions were a bit tricky to handle. It took a bunch of for loops and if statements. For some reason, lower boundary of the game blocks did not work and the user would go through them whenever they jumped below a block. This is what it looks like at the moment:
+
+//video
+
+<b>User testing: feedback, new thoughts and ideas</b>
+
+Though we thought that what we have at the moment is not sufficient to get some meaningful feedback from the users, it proved itself to be wrong. There were quite a few takeaways from the testing and we ended up coming up with a list of things to implement. You can see the list in the image below:
+
+![image](https://user-images.githubusercontent.com/83557500/163580914-9a979fcb-b05d-44ba-8072-df4c61088248.png)
+
+<b>Adding more functionality</b>
+
+After user testing we have decided to work on the game more intensely, as we are left with less than a week before the project presentation. Shyngys has resolved the issues with the lower boundaries of the game blocks by changing the value that of the reference point. Adina has added a moving block, which players can move horizontally by pushing from the side and use as a step. Collision functions similar to the other ones already implemented were adopted and adapted for the purposes of the moving block. We have thought of adding a block with locked X-position variable that would move vertically within some range, to act as an elevator. However, we have realized that it doesn't really contribute much to the collaborative aspect of the game. Perhaps, if we would add a button/switch somewhere within a map, which would activate the elevator if the player interacts with it. Since we are limited on time, we have dropped this idea and came up with something that would be easier to implement. During the user testing we were suggested to add power ups. We gave it some thought and decided that for the purpose of the game it would be more beneficial if we make each character possess 
+
+Shyngys has added added a second player square, which moved with IJKL keys, for the purpose of testing. 
+
+### <i>Game Design</i>
 
 ### <i></i>
 
