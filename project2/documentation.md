@@ -156,17 +156,30 @@ For the last test, we had the game logic ready, however were not yet done with l
 
 <b>Sending Information to the Users</b>
 
-
+For the collisions, last time, it was sometimes not checking it correctly and would have passed through the blocks sometimes. Now, we decided to not disable the movements of the players, but to teleport the player right at the collision point. Before, because we disabled the movement to the direction of the collision, it was impossible to jump and go right, now it works and users were please for this change, since this was what they were expecting before. However, we decided to change the possibility to change the direction and move in midair. Before, after the jump you could have moved to left and right however you wanted, but now you can't do that, since in our opinion, it would be logically incorrect. Now, you can only jump into the direction that you were pressing the direction button.
 
 <b>Collisions and Jumps</b>
 
+For the user communication we decided to make the whole game logic on the backend so that it won't be lagging as much as it was. In Project 2, we had game classes in the frontend and sent to the backend the position of the player that was then sent to the second player and so on. This was a lot of work and communication between the server and the client which made the game lagging.
+ 
+To get rid of the lags, we decided to create the game class in the backend and it will start running as soon as one of the players creates the room. Therefore, now the clients only send to the backend the key pressed and then the backend changes the position of the players based on the keys. In addition, every second/60 frames, using `setInterval` the backend sends to the users the players' positions and all the other necessary logic.
+ 
+![image](https://user-images.githubusercontent.com/83557500/168444540-fa3bfdb0-f905-4e6f-a48f-c1a8c65ee1b6.png)
+ 
+The frontend now consists only of graphics and how to display the information from the users. Since in Node.js, in the backend there is no p5.js, I had to recreate some of the functions myself.
 
 
-<b></b>
+function createVector(x, y) {
+  return {
+    x: x,
+    y: y,
+  };
+}
 
 
-
-<b></b>
+function map(number, inMin, inMax, outMin, outMax) {
+  return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+}
 
 ### Game Design
 <b>Changing the Art Style</b>
@@ -200,6 +213,10 @@ This part of the design was done by Adina mostly since Shyngys is not as experie
 
 To make the experience more complete we decided to add sounds and music with a similar arcade 8-bit style. We have found a few copyright free background songs on youtube. As for the sound effects, we searched them in Russian because it is almost always free of copyright and price (and doesn't require you to make an account), so basically big for pirating.
 
+Links to music and sounds used:
+- [background music](https://www.youtube.com/watch?v=cLX0cyh6_Ro)
+- [sound effects](https://zvukipro.com/games/)
+
 Sounds and music that we added:
 - background music
 - player 1 jumping sound
@@ -208,23 +225,38 @@ Sounds and music that we added:
 - button click sound
 - win fanfares sound
 
-Links to music and sounds used:
-- [background music](https://www.youtube.com/watch?v=cLX0cyh6_Ro)
-- [sound effects](https://zvukipro.com/games/)
+For the background music to start on the main menu we have made the instructions image visible by default and hence covering all the buttons, which prompts the user to close the window to start the experience. And as a symbolic indication of it, the background music starts playing on the click of the 'close' icon.
 
 <b>Adding More Windows</b>
 
 We added more windows! For even more complete user experience! To list them:
-- game completion window - previously we had a popup alert, which was very underwhelming for the occasion
+- game completion window - previously we had a popup alert, which was very underwhelming for the occasion.
+
+![image](https://user-images.githubusercontent.com/83557500/168444020-4b250476-e35b-40c2-9565-59b0f1d93985.png)
+
 - pause menu - we didn't plan to add a whole separate pause popup window, however we realized that there may be a number of things that users may want to do while playing the game, such as: pausing, restarting the level, going back to main menu, view instructions again. We decided to leave the music control outside of the pause window for it to be more of a quick fix for the user.
 
-### Thoughts, Conclusions, Reflections
+![image](https://user-images.githubusercontent.com/83557500/168443972-696fb705-a787-4c6c-8ab2-5284fddbe144.png)
 
-<b>Shyngys' learnings</b>
+- waiting area - for the users to see which character will they be playing with and wait for the other player to join we have made a waiting area. 
 
-<b>Adina's learnings</b>
+![image](https://user-images.githubusercontent.com/83557500/168444040-2dfce729-22d4-4505-866e-14047bdf51df.png)
+
+## Thoughts, Conclusions, Reflections
+
+Shyngys' learnings:
+- Creating a better socket interactions and sending informaiton with intervals
+- Working with p5 audio library
+- Creating levels using the grid format
+
+Adina's learnings:
+- Moving game logic from frontend to backend
+- Making sizes more responsible 
+- Working with sockets and handling collisions
 
 Some things that we'd do differently:
 - return moving objects as they are more engaging and allow for more interesting level designs
 - add more levels because there is never enough
 - make the control instructions more visible to the users (kind of blends in with the background)
+
+Overall, it's a project that we are really proud of! And we are happy with how much we have learned in process!
