@@ -171,12 +171,60 @@ For the last test, we had the game logic ready, however were not yet done with l
 ### Game Design
 <b>Changing the Art Style</b>
 
+Ever since we presented project 2, we were bothered by the flatness of the game. Adina was also not the biggest fan of the color combination. Since we have essentially rewrote the whole game logic, we thought that it would only make sense if we redesigned the game as well. Since the user screen is a grid, we wanted to design stackable blocks that would connect with nearby blocks seamlessly. This is something that can be easily achieved with arcade art style (Minecraft type of blocks).
 
+This part of the design was done by Adina mostly since Shyngys is not as experience with Illustrator. It took a few days as we kept having more things to make special designs for. It was actually not too challenging, but quite time-consuming. It was done using 16 by 16 grid and rectangle tools. To list some things that needed to be done in Illustrator:
+- game blocks
+- player 1
+- player 2
+- key
+- door closed
+- door open
+- background for main menu (made of game blocks)
+- background for game (made of game blocks)
+- background for pause menu
+- background for game completion
+- icon for closing game instructions
+- icon for music controls
+- icon for pause
+- icon for return (after game completion)
+- game instructions
+
+![image](https://user-images.githubusercontent.com/83557500/168443056-8a6532d0-b99d-479b-9588-ae702a392a1d.png)
+
+![image](https://user-images.githubusercontent.com/83557500/168443104-1b872e29-e614-46ee-8d17-2a9ef7d8b89c.png)
+
+![image](https://user-images.githubusercontent.com/83557500/168443137-dad3554d-a58c-4b5f-80a2-2fae0aa5f673.png)
 
 <b>Adding Sound</b>
 
+To make the experience more complete we decided to add sounds and music with a similar arcade 8-bit style. We have found a few copyright free background songs on youtube. As for the sound effects, we searched them in Russian because it is almost always free of copyright and price (and doesn't require you to make an account), so basically big for pirating.
 
+Sounds and music that we added:
+- background music
+- player 1 jumping sound
+- player 2 jumping sound
+- key pick up / door unlocking sound
+- button click sound
+- win fanfares sound
+
+Links to music and sounds used:
+- [background music](https://www.youtube.com/watch?v=cLX0cyh6_Ro)
+- [sound effects](https://zvukipro.com/games/)
 
 <b>Adding More Windows</b>
 
+We added more windows! For even more complete user experience! To list them:
+- game completion window - previously we had a popup alert, which was very underwhelming for the occasion
+- pause menu - we didn't plan to add a whole separate pause popup window, however we realized that there may be a number of things that users may want to do while playing the game, such as: pausing, restarting the level, going back to main menu, view instructions again. We decided to leave the music control outside of the pause window for it to be more of a quick fix for the user.
 
+### Thoughts, Conclusions, Reflections
+
+<b>Shyngys' learnings</b>
+
+<b>Adina's learnings</b>
+
+Some things that we'd do differently:
+- return moving objects as they are more engaging and allow for more interesting level designs
+- add more levels because there is never enough
+- make the control instructions more visible to the users (kind of blends in with the background)
