@@ -2,6 +2,10 @@
 
 Team members: Shyngys Karishev, Adina Maratkyzy
 
+### Project 3 Note
+
+To get to the documentation for project 3 click [here](#project-3)
+
 ## <b>Links</b>
 <a href="https://handy-young-chopper.glitch.me/">Click here to visit project page!</a>
 
@@ -114,3 +118,6 @@ Adina Learnings -
 
 In the future, if given a chance, we would love to add the scoreboard, a list of existing rooms that are available for users to join, adding more levels, allowing more than two players to participate, adding a window in case of loss / win.
     
+# Project 3 - Not Parkour 2.0
+
+### Project 3
