@@ -4,7 +4,7 @@ Team members: Shyngys Karishev, Adina Maratkyzy
 
 ### Project 3 Note
 
-To get to the documentation for project 3 click [here](#project-3)
+To get to the documentation for project 3 click [here](#updated-links)!
 
 ## <b>Links</b>
 <a href="https://handy-young-chopper.glitch.me/">Click here to visit project page!</a>
@@ -120,4 +120,63 @@ In the future, if given a chance, we would love to add the scoreboard, a list of
     
 # Project 3 - Not Parkour 2.0
 
-### Project 3
+### Updated Links
+<a href="https://not-parkour.herokuapp.com/">Here is a new link to play the game!</a> It kept crashing on glitch so we switched to Heroku.</a>
+
+## Planning
+Here is what we are planning to do for updated version of our game:
+
+<b>To update:</b>
+- Collision functions
+- Physics of jump
+- Sizes of the blocks
+- Sending information to the users
+- Color palette
+
+<b>To add:</b>
+- New levels
+- Waiting area
+- List of servers
+- Pause menu
+- Sound effects and background music
+- Win window
+
+## Process
+### Game Logic
+
+<b>User Testing: Feedback</b>
+
+This time around we did user testing 3 times: 1 time before we changed the physics, 1 time after we have just changed the physics, and 1 time 2 days before the presentation. The feedback that we got was generally concerned with similar things, which are the ease of user control and the completeness of the experience. 
+
+For the first test, we have presented our testers with the same version of the game that we submitted as a final version of project 2. We did so in order to refresh it in our minds what kind of fixes do we need to start from, so that in case if we will be running late on implementing everything we have in mind, we will at least have the most important things done. The feedback that we have got as primarily concerned with controls. Most of the testers did not know how to jump and were struggling with moving the chair because it was lagging. Because of the faulty information sending methods users were experinecing lags and delays that interfered with their ability to progress with the game. None of them moved past level 1 in 7 minutes. From this, we have concluded that revising the way we handle sockets should be our first priority. 
+
+For the second test, our backend code was fully revised and updated, along with game physics and collision handling. We have user tested our progress right away. The experience was definitely more smooth and little to no bugs popped up. At this point, we were considering different types of movement as well as revising our characters' special abilities. We thought that e can make jumps more customizable and perhaps get rid of the moving boxes alltogether because they were crashing almost all the time. Our testers thought that perhaps more customizable jumps will be seen as more complex by the users and suggested that we may replace the ability to move objects with something equally as engaging to not lose the collaborative aspect of the game. We were also suggested to add some more textures to the game so that it'd look less flat.
+
+For the last test, we had the game logic ready, however were not yet done with level designs and aesthetical touches, so our feedback was primarily concerned with that. We were suggested adding sound effects and background music, which we planned to do but left for the very last minutes.  
+
+<b>Sending Information to the Users</b>
+
+
+
+<b>Collisions and Jumps</b>
+
+
+
+<b></b>
+
+
+
+<b></b>
+
+### Game Design
+<b>Changing the Art Style</b>
+
+
+
+<b>Adding Sound</b>
+
+
+
+<b>Adding More Windows</b>
+
+
