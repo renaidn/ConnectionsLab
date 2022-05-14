@@ -122,6 +122,7 @@ In the future, if given a chance, we would love to add the scoreboard, a list of
 
 ### Updated Links
 <a href="https://not-parkour.herokuapp.com/">Here is a new link to play the game!</a> It kept crashing on glitch so we switched to Heroku.</a>
+To see the code click [here](https://github.com/karishev/notParkouring)!
 
 ## Planning
 Here is what we are planning to do for updated version of our game:
